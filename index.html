@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Animated Burger Icon</title>
+    <style>
+      html {
+        background-color: burlywood;
+      }
+
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+
+      header {
+        background-color: crimson;
+        position: relative;
+        display: flex;
+        justify-content: space-between;
+        padding: 10px;
+        height: 30%;
+      }
+
+      @media (max-width: 640px) {
+        header {
+          height: 60px;
+        }
+      }
+
+      .burger-icon {
+        position: absolute;
+        top: 0;
+        right: 0;
+        padding-top: 20px;
+        padding-right: 20px;
+        cursor: pointer;
+        display: none;
+      }
+
+      @media (max-width: 640px) {
+        .burger-icon {
+          display: block;
+        }
+      }
+
+      .line {
+        position: relative;
+        width: 30px;
+        height: 2px;
+        background-color: white;
+      }
+
+      .line-2 {
+        margin: 5px 0px;
+      }
+
+      .line-1-animate {
+        transform: rotate(45deg) translate(5px, 5px);
+        transition: 0.6s ease-in-out;
+      }
+
+      .line-2-animate {
+        opacity: 0;
+        transition: 0.6s ease-in-out;
+      }
+
+      .line-3-animate {
+        transform: rotate(-45deg) translate(5px, -5px);
+        transition: 0.6s ease-in-out;
+      }
+
+      .logo {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 60px;
+        height: 60px;
+        background-color: burlywood;
+        color: white;
+      }
+
+      @media (max-width: 640px) {
+        .logo {
+          position: fixed;
+          top: 10px;
+          left: 10px;
+        }
+        header {
+          /* height: 60px; */
+        }
+        .header-height-change {
+          height: 200px;
+          justify-content: center;
+          align-items: center;
+          transition: 0.1s ease-in-out;
+        }
+      }
+
+      .menu {
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: space-between;
+        list-style: none;
+        text-align: center;
+      }
+
+      @media (max-width: 640px) {
+        .menu {
+          display: none;
+        }
+        .menu-open {
+          display: flex;
+          flex-direction: column;
+        }
+      }
+
+      .nav-item {
+        margin-right: 20px;
+      }
+
+      .nav-link {
+        display: inline-block;
+        padding: 10px;
+        text-decoration: none;
+        color: white;
+        font-weight: bold;
+      }
+
+      .nav-link:hover {
+        background-color: burlywood;
+        transition: 0.6s ease-in-out;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="burger-icon">
+        <div class="line line-1"></div>
+        <div class="line line-2"></div>
+        <div class="line line-3"></div>
+      </div>
+      <div class="logo">
+        <p class="logo-text">logo</p>
+      </div>
+      <nav>
+        <ul class="menu">
+          <li class="nav-item"><a href="#" class="nav-link">Home</a></li>
+          <li class="nav-item"><a href="#" class="nav-link">About Us</a></li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">Our Services</a>
+          </li>
+          <li class="nav-item"><a href="#" class="nav-link">Blog</a></li>
+          <li class="nav-item"><a href="#" class="nav-link">Contact Us</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <script>
+      const burgerIcon = document.querySelector(".burger-icon");
+      const line2 = document.querySelector(".line-2");
+      const line1 = document.querySelector(".line-1");
+      const line3 = document.querySelector(".line-3");
+      const menu = document.querySelector(".menu");
+      const header = document.querySelector("header");
+
+      burgerIcon.addEventListener("click", function () {
+        // console.log("you clicked");
+        line2.classList.toggle("line-2-animate");
+        line1.classList.toggle("line-1-animate");
+        line3.classList.toggle("line-3-animate");
+        menu.classList.toggle("menu-open");
+        header.classList.toggle("header-height-change");
+      });
+    </script>
+  </body>
+</html>
